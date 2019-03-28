@@ -1,0 +1,11 @@
+import java.sql.*;
+
+public class JDBCDemo1 {
+
+	public static void main(String[] args) {
+		// the first step: establish a connection to the sql server
+		// second: do the query
+		// third: close the connection
+	}
+
+}

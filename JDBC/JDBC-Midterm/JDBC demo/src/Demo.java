@@ -1,0 +1,39 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		Connection conn = null;
+		try {
+			String url = "jdbc:sqlserver://localhost;" 
+							+ "instanceName=SQLEXPRESS;databaseName=university;"
+							+ "userName=sa;password=csis3300";
+			conn = DriverManager.getConnection(url);
+			if(conn != null) {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("select * from instructor");
+				while(rs.next()) {
+					System.out.println(rs.getString(1) + " "
+									+ rs.getString(2));
+				}
+			}
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+		}
+	}
+
+}

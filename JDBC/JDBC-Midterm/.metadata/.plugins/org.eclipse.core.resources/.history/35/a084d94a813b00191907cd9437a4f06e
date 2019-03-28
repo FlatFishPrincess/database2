@@ -1,0 +1,17 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		try {
+			String dbUrl = "jdbc:sqlserver://localhost;"
+						+ "instanceName=SQLEXPRESS;databaseName=university";
+						+ "user=sa;password=csis3300";
+			conn = DriverManager.getConnection(dbUrl);
+		}
+	}
+
+}

@@ -1,0 +1,28 @@
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+
+public class Demo4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		try {
+			
+			String dbUrl = "jdbc:sqlserver://localhost;"
+						+ "instanceName=SQLEXPRESS;databaseName=university"
+						+ "user=sa;password=csis3300";
+			
+			conn = DriverManager.getConnection(dbUrl);
+			Statement stmt = conn.createStatement();
+			String sql = "select * from instructor";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				System.out.println(rs.getString(2));
+			}
+			
+		}
+	}
+
+}

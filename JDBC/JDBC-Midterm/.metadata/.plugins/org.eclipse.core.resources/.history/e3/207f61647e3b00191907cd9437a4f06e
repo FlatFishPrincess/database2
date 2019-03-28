@@ -1,0 +1,20 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		Connection conn;
+		
+		try {
+			String url = "jdbc:sqlserver://localhost;instanceName:SQLXPRESS;databaseName=university"
+							+ "userName=sa;password=xpdl3142";
+			conn = DriverManager.getConnection("");
+
+		} catch(Exception e) {
+			
+		}
+		
+	}
+
+}

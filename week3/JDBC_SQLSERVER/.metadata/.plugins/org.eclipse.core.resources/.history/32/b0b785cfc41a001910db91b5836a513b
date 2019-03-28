@@ -1,0 +1,51 @@
+import java.sql.*;
+
+// In this demo, we show how to what?
+public class JDBCDemo2 {
+
+	public static void main(String[] args) {
+
+		// Initialize the connection
+		Connection conn = null;
+		try {
+			
+			String dbURL = "jdbc:sqlserver://localhost;" + 
+						"instanceName=SQLEXPRESS;databaseName=university;" + 
+						"user=sa;password=csis3300";
+			
+			// Establish the connection
+			conn = DriverManager.getConnection(dbURL);
+			if(conn != null) {
+				
+				// create a prepared statement object 
+				PreparedStatement preStmt = null;
+				// when you run the statement, it will return a resultset object
+				ResultSet rs;
+				// let's try a simple SQL query
+				rs = stmt.executeQuery("select * from instructor");
+				while(rs.next()) {
+					// Retrieve the information by using column names
+//					System.out.println(rs.getString("ID") + " " + rs.getString("name") + " " + 
+//							rs.getDouble("salary"));
+					
+					// Retrieve the information by using column index
+					// column number start from 1, not ZERO!!!
+					System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + 
+							rs.getDouble(4));
+				}
+				
+			} // handle any errors that may happen
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			// close the connection
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			} catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+}
